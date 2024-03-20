@@ -1,0 +1,11 @@
+
+     __                     _______ __             __
+    / /   ____  _________ _/ / ___// /_____ ______/ /__
+   / /   / __ \/ ___/ __ `/ /\__ \/ __/ __ `/ ___/ //_/
+  / /___/ /_/ / /__/ /_/ / /___/ / /_/ /_/ / /__/ ,<
+ /_____/\____/\___/\__,_/_//____/\__/\__,_/\___/_/|_|
+
+ 💻 LocalStack CLI 2.3.2
+
+[11:24:07] starting LocalStack in Docker mode 🐳               localstack.py:495
+ERROR: '['docker', 'ps']': exit code 1; output: b'Cannot connect to the Docker daemon at unix:///run/user/1000/docker.sock. Is the docker daemon running?\n'
