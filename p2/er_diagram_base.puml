@@ -1,0 +1,113 @@
+@startuml
+
+!define Table(x) class x << (T,#FFAAAA) >>
+!define PrimaryKey(x) <b>x</b>
+!define NotNull(x) <u>x</u>
+
+Table(customers) {
+  + NotNull(customerid)
+  + NotNull(address)
+  email
+  + NotNull(creditcard)
+  + NotNull(username)
+  + NotNull(password)
+}
+
+Table(orders) {
+  + NotNull(orderid)
+  + NotNull(orderdate)
+  customerid
+  netamount
+  tax
+  totalamount
+  status
+}
+
+Table(orderdetail) {
+  + NotNull(orderid)
+  + NotNull(prod_id)
+  price
+  + NotNull(quantity)
+}
+
+Table(products) {
+  + NotNull(prod_id)
+  + NotNull(movieid)
+  + NotNull(price)
+  + NotNull(description)
+}
+
+Table(imdb_movies) {
+  + NotNull(movieid)
+  + NotNull(movietitle)
+  + NotNull(movierelease)
+  + NotNull(movietype)
+  year
+  issuspended
+}
+
+Table(imdb_moviegenres) {
+  + NotNull(movieid)
+  + NotNull(genre)
+}
+
+Table(imdb_moviecountries) {
+  + NotNull(movieid)
+  + NotNull(country)
+}
+
+Table(imdb_movielanguages) {
+  + NotNull(movieid)
+  + NotNull(language)
+  + NotNull(extrainformation)
+}
+
+Table(imdb_actors) {
+  + NotNull(actorid)
+  + NotNull(actorname)
+  + NotNull(gender)
+}
+
+Table(imdb_actormovies) {
+  + NotNull(actorid)
+  + NotNull(movieid)
+  + NotNull(character)
+  + NotNull(ascharacter)
+  + NotNull(isvoice)
+  + NotNull(isarchivefootage)
+  + NotNull(isuncredited)
+  + NotNull(creditsposition)
+}
+
+Table(imdb_directors) {
+  + NotNull(directorid)
+  + NotNull(directorname)
+}
+
+Table(imdb_directormovies) {
+  + NotNull(directorid)
+  + NotNull(movieid)
+  + NotNull(numpartitipation)
+  ascharacter
+  participation
+  + NotNull(isarchivefootage)
+  + NotNull(isuncredited)
+  + NotNull(iscodirector)
+  + NotNull(ispilot)
+  + NotNull(ischief)
+  + NotNull(ishead)
+}
+
+customers "1" -- "0..*" orders
+orders "1" -- "0..*" orderdetail
+orderdetail "1" -- "0..*" products
+products "0..*" -- "1" imdb_movies
+imdb_movies "0..*" -- "0..*" imdb_moviegenres
+imdb_movies "0..*" -- "0..*" imdb_moviecountries
+imdb_movies "0..*" -- "0..*" imdb_movielanguages
+imdb_movies "0..*" -- "0..*" imdb_actormovies
+imdb_movies "0..*" -- "0..*" imdb_directormovies
+imdb_actors "0..*" -- "0..*" imdb_actormovies
+imdb_directors "0..*" -- "0..*" imdb_directormovies
+
+@enduml
